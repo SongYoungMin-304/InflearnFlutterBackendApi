@@ -1,5 +1,6 @@
 package com.project.flutterbackendapi.config;
 
+import com.project.flutterbackendapi.model.response.TestResponseDTO;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -62,7 +63,5 @@ public class ApiResponse<T> {
         }
         this.message = message;
     }
-
-
 
 }

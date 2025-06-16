@@ -15,6 +15,10 @@ public class Test {
     @Column(name = "test_name")
     private String testName;
 
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
+
 
     public TestResponseDTO toResponseDTO() {
         return TestResponseDTO.builder()

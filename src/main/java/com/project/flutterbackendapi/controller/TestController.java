@@ -1,11 +1,12 @@
 package com.project.flutterbackendapi.controller;
 
-import com.project.flutterbackendapi.config.ApiResponse;
-import com.project.flutterbackendapi.model.request.TestUpdateRequestDto;
+import com.project.flutterbackendapi.common.config.ApiResponse;
 import com.project.flutterbackendapi.model.response.TestResponseDTO;
 import com.project.flutterbackendapi.service.TestService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -34,11 +35,6 @@ public class TestController {
     @GetMapping("/test3/{id}")
     public ApiResponse<TestResponseDTO> test3(@PathVariable Long id) {
         return ApiResponse.createSuccess(testService.findV2ById(id).toResponseDTO());
-    }
-
-    @PutMapping("/test4/{id}")
-    public ApiResponse<TestResponseDTO> test4(@PathVariable Long id, @RequestBody TestUpdateRequestDto testUpdateRequestDto) {
-        return ApiResponse.createSuccess(testService.update(id, testUpdateRequestDto).toResponseDTO());
     }
 
 }

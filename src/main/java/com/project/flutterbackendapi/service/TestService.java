@@ -1,5 +1,6 @@
 package com.project.flutterbackendapi.service;
 
+import com.project.flutterbackendapi.common.exception.NotFoundException;
 import com.project.flutterbackendapi.entity.Test;
 import com.project.flutterbackendapi.model.request.TestUpdateRequestDto;
 import com.project.flutterbackendapi.repository.TestRepository;
@@ -18,11 +19,11 @@ public class TestService {
     private final TestQueryDslRepository testQueryDslRepository;
 
     public Test findById(Long id) {
-        return testRepository.findById(id).orElseThrow(() -> new RuntimeException("Test not found with id: " + id));
+        return testRepository.findById(id).orElseThrow(() -> new NotFoundException("Test not found with id: " + id));
     }
 
     public Test findV2ById(Long id) {
-        return testQueryDslRepository.findById(id).orElseThrow(() -> new RuntimeException("Test not found with id: " + id));
+        return testQueryDslRepository.findById(id).orElseThrow(() -> new NotFoundException("Test not found with id: " + id));
     }
 
     @Transactional

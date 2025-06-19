@@ -1,6 +1,5 @@
-package com.project.flutterbackendapi.config;
+package com.project.flutterbackendapi.common.config;
 
-import com.project.flutterbackendapi.model.response.TestResponseDTO;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +29,10 @@ public class ApiResponse<T> {
 
     public static <T> ApiResponse<T> createSuccess(T data, String message) {
         return new ApiResponse<>(HttpStatus.OK.value(), SUCCESS_STATUS, data, message);
+    }
+
+    public static ApiResponse<?> createError(int statusCode, String message) {
+        return new ApiResponse<>(statusCode, FAIL_STATUS,  message);
     }
 
     public ApiResponse(int statusCode, String status, T data) {
@@ -63,5 +66,6 @@ public class ApiResponse<T> {
         }
         this.message = message;
     }
+
 
 }

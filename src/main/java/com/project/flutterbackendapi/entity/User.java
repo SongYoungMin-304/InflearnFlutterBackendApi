@@ -1,11 +1,14 @@
 package com.project.flutterbackendapi.entity;
 
+import com.project.flutterbackendapi.enums.UserType;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.List;
 
 @Entity
 @Table(name ="t_user")
+@Getter
 public class User extends BaseEntity{
 
     @Id
@@ -21,6 +24,10 @@ public class User extends BaseEntity{
 
     @Column(name = "user_password")
     private String userPassword;
+
+    @Column(name = "user_type")
+    @Enumerated(EnumType.STRING)
+    private UserType accountType;
 
     @OneToMany(mappedBy = "user")
     private List<Post> postList;

@@ -13,6 +13,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @Configuration
 public class SpringSecurityConfig {
+
+    private final CustomAuthenticationProvider customAuthenticationProvider;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -24,6 +26,7 @@ public class SpringSecurityConfig {
                         .requestMatchers("/user/register").permitAll()
                         .anyRequest().authenticated()
                 )
+                .authenticationProvider(customAuthenticationProvider)
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/user/register"))
                 .headers(AbstractHttpConfigurer::disable); // 전체 헤더 비활성화 또는 strict 설정을 override

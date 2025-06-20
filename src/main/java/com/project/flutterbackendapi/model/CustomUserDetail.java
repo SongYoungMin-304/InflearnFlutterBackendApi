@@ -1,6 +1,8 @@
 package com.project.flutterbackendapi.model;
 
 import com.project.flutterbackendapi.entity.User;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
+@AllArgsConstructor
 public class CustomUserDetail implements UserDetails {
     private User user;
 
@@ -15,7 +18,7 @@ public class CustomUserDetail implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // UserType을 Spring Security 권한 객체로 변환
         return Collections.singletonList(
-                new SimpleGrantedAuthority(user.getAccountType().name())
+                new SimpleGrantedAuthority(user.getUserType().name())
         );
     }
 

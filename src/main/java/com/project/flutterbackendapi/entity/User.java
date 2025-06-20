@@ -1,6 +1,7 @@
 package com.project.flutterbackendapi.entity;
 
 import com.project.flutterbackendapi.enums.UserType;
+import com.project.flutterbackendapi.model.request.UserRequestDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -27,7 +28,7 @@ public class User extends BaseEntity{
 
     @Column(name = "user_type")
     @Enumerated(EnumType.STRING)
-    private UserType accountType;
+    private UserType userType;
 
     @OneToMany(mappedBy = "user")
     private List<Post> postList;
@@ -35,7 +36,14 @@ public class User extends BaseEntity{
     @OneToMany(mappedBy = "user")
     private List<Comment> commentList;
 
-
+    public static User createUser(UserRequestDTO userRequestDTO, String encodedPassword) {
+        User user = new User();
+        user.userName = userRequestDTO.getUserName();
+        user.userAccount = userRequestDTO.getUserAccount();
+        user.userPassword = encodedPassword;
+        user.userType = userRequestDTO.getUserType();
+        return user;
+    }
 
 
 }

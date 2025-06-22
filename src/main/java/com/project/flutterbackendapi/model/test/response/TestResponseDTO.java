@@ -1,4 +1,4 @@
-package com.project.flutterbackendapi.model.response;
+package com.project.flutterbackendapi.model.test.response;
 
 import lombok.Builder;
 import lombok.Getter;

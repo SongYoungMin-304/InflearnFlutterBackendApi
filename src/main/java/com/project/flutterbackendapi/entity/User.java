@@ -1,7 +1,7 @@
 package com.project.flutterbackendapi.entity;
 
 import com.project.flutterbackendapi.enums.UserType;
-import com.project.flutterbackendapi.model.request.UserRequestDTO;
+import com.project.flutterbackendapi.model.user.request.UserRequestDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 

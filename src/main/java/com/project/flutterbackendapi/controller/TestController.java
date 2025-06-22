@@ -1,7 +1,7 @@
 package com.project.flutterbackendapi.controller;
 
 import com.project.flutterbackendapi.common.config.ApiResponse;
-import com.project.flutterbackendapi.model.response.TestResponseDTO;
+import com.project.flutterbackendapi.model.test.response.TestResponseDTO;
 import com.project.flutterbackendapi.service.TestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

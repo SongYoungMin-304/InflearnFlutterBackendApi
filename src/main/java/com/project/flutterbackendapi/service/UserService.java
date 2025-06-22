@@ -2,12 +2,11 @@ package com.project.flutterbackendapi.service;
 
 import com.project.flutterbackendapi.common.exception.NotFoundException;
 import com.project.flutterbackendapi.entity.User;
-import com.project.flutterbackendapi.model.request.UserRequestDTO;
-import com.project.flutterbackendapi.model.response.UserResponseDTO;
+import com.project.flutterbackendapi.model.user.request.UserRequestDTO;
+import com.project.flutterbackendapi.model.test.response.UserResponseDTO;
 import com.project.flutterbackendapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

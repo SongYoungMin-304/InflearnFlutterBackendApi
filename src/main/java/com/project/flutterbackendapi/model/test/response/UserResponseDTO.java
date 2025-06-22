@@ -1,4 +1,4 @@
-package com.project.flutterbackendapi.model.response;
+package com.project.flutterbackendapi.model.test.response;
 
 import com.project.flutterbackendapi.enums.UserType;
 import lombok.Builder;

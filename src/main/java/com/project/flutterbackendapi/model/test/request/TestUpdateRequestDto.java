@@ -1,4 +1,4 @@
-package com.project.flutterbackendapi.model.request;
+package com.project.flutterbackendapi.model.test.request;
 
 import lombok.Getter;
 

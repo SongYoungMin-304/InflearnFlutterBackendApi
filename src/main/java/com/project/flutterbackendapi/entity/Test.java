@@ -1,6 +1,6 @@
 package com.project.flutterbackendapi.entity;
 
-import com.project.flutterbackendapi.model.response.TestResponseDTO;
+import com.project.flutterbackendapi.model.test.response.TestResponseDTO;
 import jakarta.persistence.*;
 
 @Entity

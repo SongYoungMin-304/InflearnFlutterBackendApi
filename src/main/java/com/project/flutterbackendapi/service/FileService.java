@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class FileService {
 
-    public List<FileResponseDto> uploadImages(List<MultipartFile> multipartFileList) throws Exception{
+    public List<FileResponseDto> uploadImages(List<MultipartFile> multipartFileList) throws Exception {
 
         if (!CollectionUtils.isEmpty(multipartFileList)) {
 
@@ -68,11 +68,9 @@ public class FileService {
 
             }
 
-
-
-
         }
 
+        return null;
     }
 
 }

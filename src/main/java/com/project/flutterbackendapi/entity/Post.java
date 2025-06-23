@@ -42,8 +42,10 @@ public class Post extends BaseEntity{
     @OneToMany(mappedBy = "post")
     private List<File> fileList; // 게시글에 첨부된 파일들
 
-    public static Post toEntity(PostRegisterRequestDto postRegisterRequestDto) {
+    public static Post createPost(PostRegisterRequestDto postRegisterRequestDto,
+                                  User user) {
         Post post = Post.builder()
+                .user(user)
                 .postTitle(postRegisterRequestDto.getPostTitle())
                 .postContent(postRegisterRequestDto.getPostContent())
                 .likeCnt(0L) // 초기 좋아요 수

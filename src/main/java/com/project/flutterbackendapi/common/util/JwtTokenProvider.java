@@ -26,7 +26,6 @@ public class JwtTokenProvider {
         return Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
-    // ✅ 토큰 생성
     public String createToken(String username, Collection<? extends GrantedAuthority> roles) {
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("roles", roles.stream()
@@ -58,7 +57,6 @@ public class JwtTokenProvider {
         return parseClaims(token).getSubject();
     }
 
-    // ✅ 토큰 유효성 검사
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder()
@@ -74,8 +72,10 @@ public class JwtTokenProvider {
         return false;
     }
 
-    // ✅ 토큰 추출 (ex: 헤더에서 "Bearer ..." 처리)
     public String resolveToken(HttpServletRequest request) {
+
+        log.info("songsongsongsong {}", request.getRequestURI()); // Debugging log to check the request URI
+
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
@@ -83,7 +83,6 @@ public class JwtTokenProvider {
         return null;
     }
 
-    // 🔒 내부용 Claims 파싱
     private Claims parseClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())

@@ -39,9 +39,4 @@ public class Comment extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Comment parent;
-
-
-    @OneToMany(mappedBy = "comment")
-    private List<File> fileList; // 게시글에 첨부된 파일들
-
 }

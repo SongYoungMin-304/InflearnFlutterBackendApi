@@ -19,7 +19,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SpringSecurityConfig {
 
-    private final JwtTokenProvider jwtTokenProvider;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -33,14 +32,18 @@ public class SpringSecurityConfig {
                         .requestMatchers("/user/login").permitAll()
                         .anyRequest().authenticated()
                 )
-                .addFilterBefore(
-                        new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/user/register"))
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/user/login"))
                 .headers(AbstractHttpConfigurer::disable); // 전체 헤더 비활성화 또는 strict 설정을 override
 
         return http.build();
+    }
+
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter();
     }
 
 }

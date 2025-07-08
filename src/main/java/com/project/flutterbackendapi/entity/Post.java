@@ -39,9 +39,6 @@ public class Post extends BaseEntity{
     @OneToMany(mappedBy = "post")
     private List<Comment> commentList;
 
-    @OneToMany(mappedBy = "post")
-    private List<File> fileList; // 게시글에 첨부된 파일들
-
     public static Post createPost(PostRegisterRequestDto postRegisterRequestDto,
                                   User user) {
         Post post = Post.builder()

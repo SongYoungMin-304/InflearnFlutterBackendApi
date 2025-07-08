@@ -1,5 +1,6 @@
 package com.project.flutterbackendapi.common.config;
 
+import com.project.flutterbackendapi.common.exception.InvalidPasswordException;
 import com.project.flutterbackendapi.common.exception.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -11,9 +12,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
     @ExceptionHandler({
             NotFoundException.class,
+            InvalidPasswordException.class
     })
-    public ApiResponse<?> NotFoundException(RuntimeException exception){
-        log.error("NotFoundException Check" + exception.getMessage());
+    public ApiResponse<?> InternalServerException(RuntimeException exception){
+        log.error("InternalServerException Check" + exception.getMessage());
         return ApiResponse.createError(HttpStatus.INTERNAL_SERVER_ERROR.value(), exception.getMessage());
     }
 

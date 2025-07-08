@@ -1,6 +1,7 @@
 package com.project.flutterbackendapi.controller;
 
 import com.project.flutterbackendapi.common.config.ApiResponse;
+import com.project.flutterbackendapi.common.exception.InvalidPasswordException;
 import com.project.flutterbackendapi.common.util.JwtTokenProvider;
 import com.project.flutterbackendapi.entity.User;
 import com.project.flutterbackendapi.model.user.request.UserLoginRequestDTO;
@@ -40,7 +41,7 @@ public class UserController {
         User user = userService.getUserByUserAccount(userLoginRequestDTO.getUserAccount());
 
         if (!passwordEncoder.matches(userLoginRequestDTO.getUserPassword(),user.getUserPassword())) {
-            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
+            throw new InvalidPasswordException("잘못된 비밀번호입니다.");
         }
         return ApiResponse.createSuccess(jwtTokenProvider.createToken(user.getUserAccount(), Collections.singleton(
                 new SimpleGrantedAuthority(user.getUserType().name()))));

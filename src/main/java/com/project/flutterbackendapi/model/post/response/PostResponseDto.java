@@ -3,6 +3,8 @@ package com.project.flutterbackendapi.model.post.response;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Builder
 @Getter
 public class PostResponseDto {
@@ -13,5 +15,7 @@ public class PostResponseDto {
     private long likeCnt;
     private long viewCnt;
     private long commentCnt;
-
+    private long userId;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

@@ -1,15 +1,22 @@
 package com.project.flutterbackendapi.entity;
 
 import com.project.flutterbackendapi.model.post.request.PostRegisterRequestDto;
+import com.project.flutterbackendapi.model.post.request.PostUpdateRequestDto;
 import com.project.flutterbackendapi.model.post.response.PostResponseDto;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name ="t_post")
 @Builder
+@Getter
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Post extends BaseEntity{
 
     @Id
@@ -60,7 +67,22 @@ public class Post extends BaseEntity{
                 .likeCnt(this.likeCnt)
                 .viewCnt(this.viewCnt)
                 .commentCnt(this.commentCnt)
+                .userId(this.user.getId())
+                .createdAt(this.getCreatedAt())
+                .updatedAt(this.getModifiedAt())
                 .build();
     }
 
+    public void updatePost(PostUpdateRequestDto postUpdateRequestDto) {
+        if (postUpdateRequestDto.getPostTitle() != null) {
+            this.postTitle = postUpdateRequestDto.getPostTitle();
+        }
+        if (postUpdateRequestDto.getPostContent() != null) {
+            this.postContent = postUpdateRequestDto.getPostContent();
+        }
+    }
+
+    public void delete() {
+        this.deleteYn = true;
+    }
 }
